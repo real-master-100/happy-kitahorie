@@ -1,0 +1,51 @@
+@charset "utf-8";
+
+//
+// 変数の設定
+//
+// ==========================================================================
+// 色
+// ==========================================================================
+// プライマリーカラー
+$bg__color: #fff;
+$text__color: #333333;
+$textLink__color: #333333;
+/*
+$bg__color_beige: #f0ede5;
+$bg__color_beige02: #e6e0d3;
+$bg__color_gold: #a08c6e;
+*/
+
+// ==========================================================================
+// フォント
+// ==========================================================================
+// 日本語サンセリフ体
+$fontFamily__sansSerif: "NotoSansCJKjp-Medium", "游ゴシック",
+  "Yu Gothic", YuGothic, sans-serif;
+// 日本語セリフ体
+// $fontFamily__serif: "dnp-shuei-mincho-pr6n", serif;
+
+
+// 関数の設定
+//
+// ==========================================================
+// wrapの余白
+// ==========================================================
+
+// ==========================================================
+// pxをvwに
+// ==========================================================
+@function strip-unit($number) {
+  @if type-of($number) == "number" and not unitless($number) {
+    @return math.div($number, $number * 0 + 1);
+  }
+  @return $number;
+}
+// 400px（SPデザインデータ時）の時の数値を入れる
+@function pxtovw($pxValue) {
+  @return (math.div(strip-unit($pxValue), 400) * 100) + vw;
+}
+// 1500px（PCデザインデータ時）の時の数値を入れる
+@function pxtovw-pc($pxValue) {
+  @return (math.div(strip-unit($pxValue), 1500) * 100) + vw;
+}
